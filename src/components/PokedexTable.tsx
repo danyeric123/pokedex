@@ -1,9 +1,11 @@
-import React from 'react'
-import { PokedexTableProps } from '../interfaces'
-import PokedexRow from './PokedexRow'
+import React from "react";
+import { PokedexTableProps } from "../interfaces";
+import PokedexRow from "./PokedexRow";
 
-
-const PokedexTable: React.FC<PokedexTableProps> = ({pokemons}) => {
+const PokedexTable: React.FC<PokedexTableProps> = ({
+  pokemons,
+  selectType,
+}) => {
   return (
     <table>
       <thead>
@@ -17,11 +19,11 @@ const PokedexTable: React.FC<PokedexTableProps> = ({pokemons}) => {
       </thead>
       <tbody>
         {pokemons.map((pokemon, index) => (
-          <PokedexRow key={index} pokemon={pokemon} />
+          <PokedexRow key={index} pokemon={pokemon} selectType={selectType} />
         ))}
       </tbody>
     </table>
-  )
-}
+  );
+};
 
-export default PokedexTable
+export default PokedexTable;

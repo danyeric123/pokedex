@@ -1,24 +1,40 @@
 export interface PokedexTableProps {
-  pokemons: Pokemon[]
+  pokemons: Pokemon[];
+  selectType: (type: string) => void;
 }
 
 export interface Pokemon {
-  name: string
-  id: number
-  types: string[]
+  name: string;
+  id: number;
+  types: {
+    name: string;
+    url: string;
+  }[];
   sprites: {
-    front_default: string
-    front_shiny: string
-  }
+    front_default: string;
+    front_shiny: string;
+  };
 }
 
 export interface PokedexRowProps {
-  pokemon: Pokemon
+  pokemon: Pokemon;
+  selectType: (type: string) => void;
 }
 
 export interface FilterablePokedexTableProps {
-  selectedType: string
-  selectType: (type: string) => void
+  selectedType: string;
+  selectType: (type: string) => void;
+}
+
+export interface PokemonTypeObject {
+  pokemon: {
+    name: string;
+    url: string;
+  };
+}
+
+export interface PokemonTypeAPIResponse {
+  pokemon: PokemonTypeObject[];
 }
 
 export interface PokemonAPIResponse {
