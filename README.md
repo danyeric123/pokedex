@@ -2,6 +2,10 @@
 
 This project is a Pokedex page built with React and TypeScript, inspired by an idea from [Theo](https://t3-tools.notion.site/Pokedex-Problem-90f9dcfff10d4418a6fad44581b1ecff) where he asked interviewees to create a pokedex with several prompts. I took it several steps forward with the types clickable and integrating with a "real" API. I also added styling and included shiny pokemon sprites
 
+## Live Website
+
+Live website can be found here: [Netlify link](https://react-ts-pokedex.netlify.app/)
+
 ## Features
 
 - **TypeScript Integration**: Leverages TypeScript for static type checking, enhancing code quality and developer experience.
