@@ -19,7 +19,12 @@ const PokedexTable: React.FC<PokedexTableProps> = ({
       </thead>
       <tbody>
         {pokemons.map((pokemon, index) => (
-          <PokedexRow key={index} pokemon={pokemon} selectType={selectType} />
+          <PokedexRow
+            key={index}
+            pokemon={pokemon.snippet}
+            pokemonDetails={pokemon.details}
+            selectType={selectType}
+          />
         ))}
       </tbody>
     </table>

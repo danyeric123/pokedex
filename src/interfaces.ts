@@ -1,5 +1,8 @@
 export interface PokedexTableProps {
-  pokemons: Pokemon[];
+  pokemons: {
+    snippet: Pokemon;
+    details: PokemonAPIResponse;
+  }[];
   selectType: (type: string) => void;
 }
 
@@ -18,6 +21,13 @@ export interface Pokemon {
 
 export interface PokedexRowProps {
   pokemon: Pokemon;
+  pokemonDetails: PokemonAPIResponse;
+  selectType: (type: string) => void;
+}
+
+export interface TypeProps {
+  typeName: string;
+  index: number;
   selectType: (type: string) => void;
 }
 
@@ -26,11 +36,29 @@ export interface FilterablePokedexTableProps {
   selectType: (type: string) => void;
 }
 
+export interface PokemonDetailsProps {
+  pokemonDetails: PokemonAPIResponse;
+}
+
+export interface PokemonImageProps {
+  srcDefault: string;
+  srcGIF?: AnimatedSprites;
+  alt: string;
+}
+
 export interface PokemonTypeObject {
   pokemon: {
     name: string;
     url: string;
   };
+}
+
+export interface PokemonEvolutionChainProps {
+  evolutionChain: PokemonAPIResponse[];
+}
+
+export interface PokemonAbilitiesProps {
+  abilities: Ability[];
 }
 
 export interface PokemonTypeAPIResponse {
