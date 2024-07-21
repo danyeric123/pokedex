@@ -4,6 +4,7 @@ import PokedexTable from "../components/PokedexTable";
 import PokemonTypeSelection from "../components/PokemonTypeSelection";
 import axios from "axios";
 import { useLocation } from "react-router";
+import { LoadingComponent} from "../components/Loading";
 
 function Pokedex() {
   const [selectedType, setSelectedType] = useState<string>("");
@@ -103,6 +104,10 @@ function Pokedex() {
     setSelectedType(typeName);
     setWasSelected(true);
   };
+
+  if (loading) {
+    return <LoadingComponent />;
+  }
 
   return (
     <div className="Pokedex">
