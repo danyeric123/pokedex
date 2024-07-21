@@ -79,7 +79,6 @@ function Pokedex() {
   if (location.state !== null && location.state !== undefined && "selectionType" in location.state && !wasSelected) {
     const selectionType = location.state.selectionType as string;
     if (selectionType !== selectedType) {
-      console.log("selectionType", selectionType);
       setSelectedType(selectionType);
       fetchPokemons(1, selectionType);
     }
