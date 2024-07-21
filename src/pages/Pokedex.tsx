@@ -4,7 +4,8 @@ import PokedexTable from "../components/PokedexTable";
 import PokemonTypeSelection from "../components/PokemonTypeSelection";
 import axios from "axios";
 import { useLocation } from "react-router";
-import { LoadingComponent} from "../components/Loading";
+import { LoadingComponent } from "../components/Loading";
+import { PokemonSearch } from "../components/Search";
 
 function Pokedex() {
   const [selectedType, setSelectedType] = useState<string>("");
@@ -18,6 +19,7 @@ function Pokedex() {
   const [page, setPage] = useState<number>(1);
   const [noMorePages, setNoMorePages] = useState<boolean>(false);
   const [wasSelected, setWasSelected] = useState<boolean>(false);
+  const [searchTerm, setSearchTerm] = useState<string>("");
 
   const location = useLocation();
 
@@ -72,6 +74,12 @@ function Pokedex() {
     }
   };
 
+  useEffect(() => {
+    if (searchTerm === "") {
+      fetchPokemons(1, selectedType);
+    }
+  }, [searchTerm]);
+
   if (
     location.state !== null &&
     location.state !== undefined &&
@@ -112,6 +120,12 @@ function Pokedex() {
   return (
     <div className="Pokedex">
       <h1>Pokedex</h1>
+      <PokemonSearch
+        setPokemonList={setPokemons}
+        transformPokemon={transformPokemon}
+        pokemonsList={pokemons}
+        setSearch={setSearchTerm}
+      />
       {selectedType !== "" ? (
         ""
       ) : (
