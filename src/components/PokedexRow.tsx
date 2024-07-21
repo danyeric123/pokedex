@@ -8,7 +8,6 @@ const PokedexRow: React.FC<PokedexRowProps> = ({
   selectType,
   pokemonDetails,
 }) => {
-
   return (
     <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
       <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white">

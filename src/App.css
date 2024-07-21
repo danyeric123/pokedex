@@ -62,8 +62,12 @@
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 /* Error Component Styles */
@@ -114,4 +118,3 @@
 .retry-button:hover {
   background-color: #5a5fcf; /* Darker shade for hover effect */
 }
-

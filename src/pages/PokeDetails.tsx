@@ -15,9 +15,11 @@ const PokeDetails: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { name } = useParams();
-  const initialPokemonDetails = location.state ? location.state.pokemonDetails as PokemonAPIResponse : null;
+  const initialPokemonDetails = location.state
+    ? (location.state.pokemonDetails as PokemonAPIResponse)
+    : null;
   const [pokemonDetails, setPokedetails] = useState<PokemonAPIResponse | null>(
-    initialPokemonDetails
+    initialPokemonDetails,
   );
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<boolean>(false);
@@ -28,25 +30,26 @@ const PokeDetails: React.FC = () => {
 
   useEffect(() => {
     const getPokemonDetails = async () => {
-      if (!pokemonDetails) {
-        await axios.get(`https://pokeapi.co/api/v2/pokemon/${name}`).then((response) => {
+      await axios
+        .get(`https://pokeapi.co/api/v2/pokemon/${name}`)
+        .then((response) => {
           setPokedetails(response.data);
           setLoading(false);
-        }).catch((error) => {
-          console.error("Failed to fetch pokemon details:", error)
-          setError(true)
-          });
-      }
-      };
+        })
+        .catch((error) => {
+          console.error("Failed to fetch pokemon details:", error);
+          setError(true);
+        });
+    };
 
     if (!pokemonDetails || pokemonDetails.name !== name) {
       getPokemonDetails();
     }
-  }, [name]);
+  }, [name, pokemonDetails]);
 
   useEffect(() => {
     if (pokemonDetails && pokemonDetails.id) {
-    fetchEvolutionChain(pokemonDetails.id);
+      fetchEvolutionChain(pokemonDetails.id);
     }
   }, [pokemonDetails?.id]);
 
@@ -70,6 +73,7 @@ const PokeDetails: React.FC = () => {
         current = current.evolves_to[0];
       }
       setEvolutionChain(chain);
+      setLoading(false);
     } catch (error) {
       console.error("Failed to fetch evolution chain:", error);
       setError(true);

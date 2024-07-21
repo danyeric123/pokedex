@@ -65,18 +65,18 @@ function Pokedex() {
       setPokemons(pokemons);
       setPage(page);
     } catch (error) {
-      // if (error.response && error.response.status === 404) {
-      //   // Handle 404 error specifically
-      //   setNoMorePages(true);
-      // } else {
       console.error("Failed to fetch pokemons:", error);
-      // }
     } finally {
       setLoading(false);
     }
   };
 
-  if (location.state !== null && location.state !== undefined && "selectionType" in location.state && !wasSelected) {
+  if (
+    location.state !== null &&
+    location.state !== undefined &&
+    "selectionType" in location.state &&
+    !wasSelected
+  ) {
     const selectionType = location.state.selectionType as string;
     if (selectionType !== selectedType) {
       setSelectedType(selectionType);
@@ -102,7 +102,7 @@ function Pokedex() {
   const selectType = (typeName: string) => {
     setSelectedType(typeName);
     setWasSelected(true);
-  }
+  };
 
   return (
     <div className="Pokedex">
